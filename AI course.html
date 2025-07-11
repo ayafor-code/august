@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechLink Academy - AI Agents & Workflow Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F9FAFB; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem;
+            left: -0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 9999px;
+            background-color: #3357FF; 
+            border: 2px solid white;
+        }
+        .flowchart-step {
+            position: relative;
+            padding-right: 2rem; 
+        }
+        .flowchart-step:not(:last-child)::after {
+            content: '→';
+            position: absolute;
+            right: 0.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #3357FF;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- 
+    Chosen Color Palette: Energetic & Playful
+    #FF5733 (Vibrant Red-Orange)
+    #33FF57 (Vibrant Green)
+    #3357FF (Vibrant Blue)
+    #FF33A1 (Vibrant Pink)
+    #FBBF24 (Amber/Yellow - from Tailwind for accents)
+    Backgrounds/Text: #111827, #F9FAFB, #FFFFFF
+    
+    Narrative & Structure Plan:
+    1. Hook: "Zero to AI Hero in 8 Weeks" to grab attention.
+    2. Overview: Key course stats using pictographs, including new "Live Online Training" detail.
+    3. The Journey: A vertical timeline showing week-by-week topics.
+    4. Skills: Bar chart showing practical vs. theoretical focus.
+    5. Tools: Bubble chart highlighting n8n's central role.
+    6. Industries: Donut chart showing application areas.
+    7. Final Project: HTML/CSS flowchart of the project process.
+    8. CTA: Enrollment button.
+
+    Visualization Selection Plan:
+    - Big Numbers (Hook): Inform goal. Implemented with large text. NO SVG.
+    - Pictographs (Overview): Inform goal. Implemented with Unicode characters. NO SVG.
+    - Vertical Timeline (Journey): Organize/Change goal. Implemented with HTML/CSS. NO SVG, NO MERMAID JS.
+    - Bar Chart (Skills): Compare goal. Implemented with Chart.js Canvas. NO SVG.
+    - Bubble Chart (Tools): Compare goal. Implemented with Chart.js Canvas. NO SVG.
+    - Donut Chart (Industries): Compare/Composition goal. Implemented with Chart.js Canvas. NO SVG.
+    - Flowchart (Project): Organize goal. Implemented with HTML/CSS. NO SVG, NO MERMAID JS.
+    
+    Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output.
+    
+    Color Blending Note: To perfectly blend with zenith-africa.com, please provide the specific HEX color codes from that website. I cannot access external URLs to determine their color schemes. The current "Energetic & Playful" palette is maintained for now.
+    -->
+
+    <header class="bg-gray-900 text-white text-center py-20 px-4">
+        <h1 class="text-4xl md:text-6xl font-black mb-4">Go from <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#33FF57] to-[#3357FF]">Zero to AI Hero</span> in 8 Weeks</h1>
+        <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">Join TechLink Academy's beginner-friendly course to master AI agents and build powerful automated workflows—no coding experience required.</p>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        
+        <section id="overview" class="mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <span class="text-5xl">🗓️</span>
+                    <h3 class="text-2xl font-bold mt-4">8 Week Duration</h3>
+                    <p class="text-gray-600 mt-2">A focused, 2-month program to take you from fundamentals to practical application.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <span class="text-5xl">👨‍💻</span>
+                    <h3 class="text-2xl font-bold mt-4">100% Beginner Friendly</h3>
+                    <p class="text-gray-600 mt-2">Designed from the ground up for individuals with absolutely no prior tech experience.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <span class="text-5xl">⚙️</span>
+                    <h3 class="text-2xl font-bold mt-4">No-Code Tooling</h3>
+                    <p class="text-gray-600 mt-2">Get hands-on experience building real AI workflows with industry-standard tools.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <span class="text-5xl">💻</span>
+                    <h3 class="text-2xl font-bold mt-4">Live Online Training</h3>
+                    <p class="text-gray-600 mt-2">Attend interactive sessions 100% online via Zoom, from anywhere in the world.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-12">Your 8-Week Learning Journey</h2>
+            <div class="max-w-4xl mx-auto relative pl-4 border-l-4 border-gray-200">
+                <div class="timeline-item mb-12 pl-8">
+                    <h3 class="text-xl font-bold text-[#3357FF]">Month 1: Foundations & Core Concepts</h3>
+                    <p class="text-gray-600">Build a solid base, from understanding basic technology to grasping the core ideas behind AI and automated workflows.</p>
+                    <div class="mt-4 space-y-2 text-sm">
+                        <p><strong class="font-semibold">Week 1:</strong> Introduction to Technology & The Digital World</p>
+                        <p><strong class="font-semibold">Week 2:</strong> Introduction to Artificial Intelligence (AI)</p>
+                        <p><strong class="font-semibold">Week 3:</strong> Understanding AI Agents</p>
+                        <p><strong class="font-semibold">Week 4:</strong> Introduction to AI Workflows</p>
+                    </div>
+                </div>
+                <div class="timeline-item mb-8 pl-8">
+                    <h3 class="text-xl font-bold text-[#3357FF]">Month 2: Practical Applications & Building</h3>
+                    <p class="text-gray-600">Transition from theory to practice. Apply your knowledge to build real-world AI solutions and prepare for your final project.</p>
+                     <div class="mt-4 space-y-2 text-sm">
+                        <p><strong class="font-semibold">Week 5:</strong> AI in Creative & Communication Industries</p>
+                        <p><strong class="font-semibold">Week 6:</strong> AI in Business & Science Industries</p>
+                        <p><strong class="font-semibold">Week 7:</strong> Advanced Prompting & Workflow Design</p>
+                        <p><strong class="font-semibold">Week 8:</strong> The Future of AI & Project Showcase</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="visualizations" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-center mb-4">Learning Approach</h3>
+                 <p class="text-center text-gray-600 mb-4">This course heavily emphasizes hands-on, practical skills to ensure you can apply what you learn immediately.</p>
+                <div class="chart-container">
+                    <canvas id="skillsChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-2xl font-bold text-center mb-4">Industry Applications</h3>
+                <p class="text-center text-gray-600 mb-4">Explore how AI is transforming various sectors, preparing you to innovate in any field.</p>
+                <div class="chart-container">
+                    <canvas id="industryChart"></canvas>
+                </div>
+            </div>
+             <div class="bg-white p-6 rounded-lg shadow-md md:col-span-2">
+                <h3 class="text-2xl font-bold text-center mb-4">Core Tools You'll Master</h3>
+                 <p class="text-center text-gray-600 mb-4 max-w-2xl mx-auto">You'll work with a suite of powerful AI and automation tools. Our curriculum focuses on no coding tools as for connecting different AI services into seamless workflows.</p>
+                <div class="chart-container max-w-3xl h-[400px] md:h-[450px] max-h-[500px]">
+                    <canvas id="toolsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="project" class="text-center bg-white p-8 rounded-lg shadow-md mb-16">
+            <h2 class="text-3xl font-bold mb-4">Create Your Capstone Project</h2>
+            <p class="max-w-3xl mx-auto text-gray-600 mb-8">In the final weeks, you'll apply all your skills to build a functional, real-world AI-powered workflow using our tool. This project will serve as a powerful addition to your portfolio, showcasing your ability to innovate with AI.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 text-center">
+                <div class="flowchart-step bg-blue-100 text-blue-800 font-semibold py-2 px-4 rounded-lg">Identify a Problem</div>
+                <div class="flowchart-step bg-green-100 text-green-800 font-semibold py-2 px-4 rounded-lg">Design AI Agents</div>
+                <div class="flowchart-step bg-orange-100 text-orange-800 font-semibold py-2 px-4 rounded-lg">Connect AI Tools</div>
+                <div class="flowchart-step bg-pink-100 text-pink-800 font-semibold py-2 px-4 rounded-lg">Test & Showcase</div>
+            </div>
+        </section>
+
+        <footer class="text-center py-10">
+            <h2 class="text-3xl font-bold mb-4">Ready to Build the Future?</h2>
+            <p class="text-gray-600 mb-8">Enroll now at TechLink Academy and start your journey into the exciting world of AI.</p>
+            <a href="https://forms.gle/pZhDNo76M8h5ky9T9" target="_blank" rel="noopener noreferrer" class="inline-block bg-gradient-to-r from-[#FF5733] to-[#FF33A1] text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:scale-105 transition-transform">Enroll Today</a>
+        </footer>
+    </main>
+
+<script>
+    function wrapText(str, maxWidth) {
+        if (typeof str !== 'string' || str.length <= maxWidth) {
+            return str;
+        }
+        const words = str.split(' ');
+        const lines = [];
+        let currentLine = words[0];
+
+        for (let i = 1; i < words.length; i++) {
+            const word = words[i];
+            if (currentLine.length + word.length + 1 < maxWidth) {
+                currentLine += ' ' + word;
+            } else {
+                lines.push(currentLine);
+                currentLine = word;
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+
+    const tooltipTitleCallback = (tooltipItems) => {
+        const item = tooltipItems[0];
+        let label = item.chart.data.labels[item.dataIndex];
+        return Array.isArray(label) ? label.join(' ') : label;
+    };
+    
+    const sharedChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    font: {
+                        size: 14,
+                        family: "'Inter', sans-serif"
+                    }
+                }
+            }
+        }
+    };
+
+    const skillsChartCtx = document.getElementById('skillsChart').getContext('2d');
+    new Chart(skillsChartCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Learning Focus'],
+            datasets: [{
+                label: 'Practical Hands-On',
+                data: [75],
+                backgroundColor: '#3357FF',
+                borderColor: '#3357FF',
+                borderWidth: 1
+            }, {
+                label: 'Theoretical Concepts',
+                data: [25],
+                backgroundColor: '#FF5733',
+                borderColor: '#FF5733',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            ...sharedChartOptions,
+            indexAxis: 'y',
+            scales: {
+                x: {
+                    stacked: true,
+                    ticks: {
+                        callback: function(value) { return value + "%" }
+                    }
+                },
+                y: {
+                    stacked: true
+                }
+            },
+             plugins: {
+                ...sharedChartOptions.plugins,
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback,
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.raw}%`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    const industryChartCtx = document.getElementById('industryChart').getContext('2d');
+    new Chart(industryChartCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Creative & Communication', 'Business & Finance', 'Science & Healthcare', 'Education'],
+            datasets: [{
+                label: 'Industry Focus',
+                data: [40, 30, 20, 10],
+                backgroundColor: ['#FF33A1', '#3357FF', '#33FF57', '#FBBF24'],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+           ...sharedChartOptions,
+           plugins: {
+                ...sharedChartOptions.plugins,
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    }
+                }
+            }
+        }
+    });
+
+    const toolsChartCtx = document.getElementById('toolsChart').getContext('2d');
+    new Chart(toolsChartCtx, {
+        type: 'bubble',
+        data: {
+            labels: ['Zen', 'ChatGPT', 'Midjourney', 'Google Suite', 'Zapier (Conceptual)'],
+            datasets: [{
+                label: 'Workflow Automation',
+                data: [{ x: 2, y: 3, r: 40 }], 
+                backgroundColor: '#3357FF'
+            }, {
+                label: 'Text Generation',
+                data: [{ x: 4, y: 6, r: 25 }],
+                backgroundColor: '#33FF57'
+            }, {
+                label: 'Image Generation',
+                data: [{ x: 6, y: 2, r: 20 }],
+                backgroundColor: '#FF33A1'
+            }, {
+                label: 'Productivity',
+                data: [{ x: 8, y: 7, r: 15 }],
+                backgroundColor: '#FF5733'
+            },
+            {
+                label: 'Automation Concepts',
+                data: [{ x: 1, y: 8, r: 10 }],
+                backgroundColor: '#FBBF24'
+            }]
+        },
+        options: {
+            ...sharedChartOptions,
+            scales: {
+                x: { display: false },
+                y: { display: false }
+            },
+            plugins: {
+                 legend: {
+                    position: 'bottom',
+                 },
+                 tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback,
+                        label: function(context) {
+                            let label = context.chart.data.labels[context.dataIndex];
+                            return `${label}: Central to ${context.dataset.label}`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
